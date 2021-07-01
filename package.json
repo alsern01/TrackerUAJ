@@ -1,0 +1,17 @@
+{
+    "name": "ucm.uaj.tracker",
+    "version": "1.0.0",
+    "displayName": "Tracker",
+    "description": "Tracker de Unity para la asignatura Usabilidad y Analisis de Videosjuegos de la UCM",
+    "keywords": [
+        "UAJ",
+        "UCM",
+        "tracker",
+        "track"
+    ],
+    "author": {
+        "name": "Alvaro Serna",
+        "email": "alsern01@ucm.es",
+        "url": "https://www.youtube.com/watch?v=OhwP5TYgucM"
+    }
+}
