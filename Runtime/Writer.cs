@@ -2,29 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace UAJ.Tracker
+public class Writer
 {
-    public class Writer
+    private static string dataPath = null;
+
+    private static System.IO.StreamWriter _writer;
+
+    /// <summary>
+    /// Assigns the data path where we want to store the tracker files
+    /// </summary>
+    public static void Init()
     {
-        private static string dataPath = null;
+        dataPath = Application.persistentDataPath;
+    }
 
-        private static System.IO.StreamWriter _writer;
-
-        public static void Init()
-        {
-            dataPath = Application.persistentDataPath;
-        }
-
-        /// <summary>
-        /// Method used to parse and write event info into a .json file
-        /// </summary>
-        /// <param name="e">Event we want to parse and write to a file</param>
-        public static void WriteToFile(Event e)
-        {
-            _writer =
-                new System.IO.StreamWriter(dataPath + "/" + e.GetPath(), true);
-            _writer.WriteLine(JsonUtility.ToJson(e));
-            _writer.Close();
-        }
+    /// <summary>
+    /// Writes the event in the dessigned file
+    /// </summary>
+    public static void WriteToFile(Event e)
+    {
+        _writer =
+            new System.IO.StreamWriter(dataPath + "/" + e.GetPath(), true);
+        _writer.WriteLine(JsonUtility.ToJson(e));
+        _writer.Close();
     }
 }
+
