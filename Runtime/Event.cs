@@ -1,10 +1,8 @@
-﻿using UnityEngine;
-
-/// <summary>
+﻿/// <summary>
 /// Base class for all the tracker events. Contains shared attributes
 /// and functionality
 /// </summary>
-class Event
+public class Event
 {
     public float timeStamp;
 
@@ -18,12 +16,12 @@ class Event
 
     public Event(int playerID)
     {
-        this.playerID;
+        this.playerID = playerID;
     }
 
     public void Init(int playerID, float timeStamp)
     {
-        this.playerID;
+        this.playerID = playerID;
         this.timeStamp = timeStamp;
     }
 

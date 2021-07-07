@@ -1,9 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-
-public class ShootBallEvent : Event
+﻿class ShootBallEvent : Event
 {
     public ShootBallEvent(int playerID, float timeStamp)
     {

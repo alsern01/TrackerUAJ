@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-/// <summary>
+﻿/// <summary>
 /// Class that provides when the player lost the ball and the way he lost it
 /// </summary>
 class LoseBallEvent : Event

@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-/// <summary>
+﻿/// <summary>
 /// Class that provides information about any camera movement the player makes
 /// </summary>
 class CameraMovementEvent : Event

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public static class Tracker
 {
     private static Queue<Event> pendingEvents = new Queue<Event>();
@@ -10,23 +9,21 @@ public static class Tracker
 
     public static void Init()
     {
+        Debug.Log("TRACKER INIT");
         Writer.Init();
     }
 
     public static void Update()
     {
-        foreach (Event e in pendingEvents)
+        while (pendingEvents.Count > 0)
         {
-            Writer.WriteToFile(e);
-            Debug.Log("ASHAKJSHAJSHAJSH");
+            Writer.WriteToFile(pendingEvents.Dequeue());
         }
     }
 
     public static void EventExample()
     {
-        Event e = new Event();
-        e.Init(0, Time.time);
-
+        DefaultEvent e = new DefaultEvent(0, Time.time);
         // Add the event to the pending queue
         pendingEvents.Enqueue(e);
     }
