@@ -1,3 +1,13 @@
-﻿{
-	"name": "ucm.uaj.tracker.runtime"
+{
+    "name": "ucm.uaj.tracker.runtime",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

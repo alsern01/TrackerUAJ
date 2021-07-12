@@ -1,4 +1,7 @@
-﻿class DefaultEvent : Event
+﻿/// <summary>
+/// Default event just to test functionality
+/// </summary>
+class DefaultEvent : Event
 {
     public DefaultEvent(int playerID, float timeStamp)
     {

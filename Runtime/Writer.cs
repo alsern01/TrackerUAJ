@@ -24,7 +24,7 @@ public class Writer
         _writer =
             new System.IO.StreamWriter(dataPath + "/" + e.GetPath(), true);
 
-        Debug.Log(dataPath + "/");
+        //Debug.Log(dataPath + "/");
         _writer.WriteLine(JsonUtility.ToJson(e));
         _writer.Close();
     }
