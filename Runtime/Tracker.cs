@@ -9,14 +9,16 @@ public static class Tracker
     private static Queue<Event> pendingEvents = new Queue<Event>();
     // Manages the thread loop
     private static bool exit_ = false;
+    //Persistence object
+    Persistence persisteneObj;
 
     /// <summary>
     /// Call this to initialise the Tracker thread and the Writer class
     /// </summary>
     public static void Init()
     {
+        persisteneObj = new Persistence();
         Debug.Log("TRACKER INIT");
-        Writer.Init();
 
         Thread t = new Thread(new ThreadStart(EventUpdate));
         t.Start();
@@ -41,9 +43,9 @@ public static class Tracker
         {
             while (pendingEvents.Count > 0)
             {
-                Writer.WriteToFile(pendingEvents.Dequeue());
+                persisteneObj.Send(pendingEvents.Dequeue(),"json");
             }
-            Thread.Sleep(5000);
+            Thread.Sleep(500);
         }
     }
 

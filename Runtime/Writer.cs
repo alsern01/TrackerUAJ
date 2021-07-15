@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
 public class Writer
@@ -19,14 +20,47 @@ public class Writer
     /// <summary>
     /// Writes the event in the dessigned file
     /// </summary>
-    public static void WriteToFile(Event e)
+    public static void WriteToFile(Event e,string format)
     {
-        _writer =
-            new System.IO.StreamWriter(dataPath + "/" + e.GetPath(), true);
-
-        //Debug.Log(dataPath + "/");
-        _writer.WriteLine(JsonUtility.ToJson(e));
-        _writer.Close();
+        switch (format)
+        {
+            case "json":
+                {
+                    _writer = new System.IO.StreamWriter(dataPath + "/" + e.GetPath(), true);
+                    //Debug.Log(dataPath + "/");
+                    _writer.WriteLine(JsonUtility.ToJson(e));
+                    _writer.Close();
+                    break;
+                }
+            case "xml":
+                {
+                    var serializer = new XmlSerializer(typeof(MonsterContainer));
+                    var stream = new FileStream(dataPath + "/" + e.GetPath(), FileMode.Create));
+                    serializer.Serialize(e, this);
+                    stream.Close();
+                   /* _writer = new System.IO.StreamWriter(dataPath + "/" + e.GetPath(), true);
+                    //Debug.Log(dataPath + "/");
+                    _writer.WriteLine(JsonUtility.ToJson(e));
+                    _writer.Close();*/
+                    break;
+                }
+            case "xapi":
+                {
+                   /* _writer = new System.IO.StreamWriter(dataPath + "/" + e.GetPath(), true);
+                    //Debug.Log(dataPath + "/");
+                    _writer.WriteLine(JsonUtility.ToJson(e));
+                    _writer.Close();*/
+                    break;
+                }
+            default:
+                {
+                   /* _writer = new System.IO.StreamWriter(dataPath + "/" + e.GetPath(), true);
+                    //Debug.Log(dataPath + "/");
+                    _writer.WriteLine(JsonUtility.ToJson(e));
+                    _writer.Close();*/
+                    break;
+                }
+        }
     }
 }
 
