@@ -5,7 +5,7 @@
 public class Event
 {
 
-    public enum eventType{ SHOT , PICKBALL, LEAVEBALL, CAMERAANGLE, MOVECAMERA};
+    public enum eventType{ SHOT , PICKBALL, LOSEBALL, CAMERAANGLE, MOVECAMERA};
 
     public float timeStamp;
 
