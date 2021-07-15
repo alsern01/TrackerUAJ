@@ -4,6 +4,9 @@
 /// </summary>
 public class Event
 {
+
+    public enum eventType{ SHOT , PICKBALL, LEAVEBALL, CAMERAANGLE, MOVECAMERA};
+
     public float timeStamp;
 
     public int playerID;

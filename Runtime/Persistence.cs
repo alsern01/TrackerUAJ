@@ -6,15 +6,12 @@ using UnityEngine;
 public class Persistence
 {
    
-    Writer w;
+ 
     public Persistence()
     {
-        w.Init();
+       
     }
-    public void Send(Event item,string format)
-    {
-        w.WriteToFile(item,format);
-    }
+    public abstract void Send(Event item, string format);
 
-    public void Flush() { }
+    public void Flush();
 }

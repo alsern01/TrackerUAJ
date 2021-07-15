@@ -5,6 +5,26 @@ using UnityEngine;
 
 public static class Tracker
 {
+
+    //https://answers.unity.com/questions/891380/unity-c-singleton.html
+
+    #region TRACKER INSTANCE
+    public static Tracker _instance;
+    public static Tracker Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = new Tracker();
+            }
+
+            return _instance;
+        }
+    }
+    #endregion
+
+
     // Queue for the event management
     private static Queue<Event> pendingEvents = new Queue<Event>();
     // Manages the thread loop
