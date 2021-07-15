@@ -3,7 +3,7 @@
 /// </summary>
 class LoseBallEvent : Event
 {
-    protected bool playerDead;
+    public bool playerDead;
 
     public LoseBallEvent(int playerID, float timeStamp, bool dead)
     {

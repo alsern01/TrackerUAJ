@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Persistence
+public abstract class Persistence
 {
-   
- 
+
+
     public Persistence()
     {
-       
+
     }
     public abstract void Send(Event item, string format);
 
-    public void Flush();
+    public abstract void Flush();
 }

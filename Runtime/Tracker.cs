@@ -8,7 +8,7 @@ public static class Tracker
 
     //https://answers.unity.com/questions/891380/unity-c-singleton.html
 
-    #region TRACKER INSTANCE
+    /*#region TRACKER INSTANCE
     public static Tracker _instance;
     public static Tracker Instance
     {
@@ -22,35 +22,38 @@ public static class Tracker
             return _instance;
         }
     }
-    #endregion
-
-
+    #endregion*/
     // Queue for the event management
     private static Queue<Event> pendingEvents = new Queue<Event>();
     // Manages the thread loop
     private static bool exit_ = false;
     //Persistence object
-    Persistence persisteneObj;
+    static FilePersistence persisteneObj;
 
-    public float timeStamp;
+    public static float timeStamp;
 
-    public int playerID;
+    private static int playerID;
 
-    float camAngle;
+    private static float camAngle;
 
-    bool dead;
+    private static bool dead;
 
-    public void setPlayerId(int pID)
+    public static void setPlayerId(int pID)
     {
         playerID = pID;
     }
 
-    public void setCameraAngle(float a)
+    public static void setTimeStamp(float tiemS)
+    {
+        timeStamp = tiemS;
+    }
+
+    public static void setCameraAngle(float a)
     {
         camAngle = a;
     }
 
-    public void setDead(bool d)
+    public static void setDead(bool d)
     {
         dead = d;
     }
@@ -61,11 +64,12 @@ public static class Tracker
     /// </summary>
     public static void Init()
     {
-        persisteneObj = new Persistence();
-        Debug.Log("TRACKER INIT");
+        persisteneObj = new FilePersistence();
 
         Thread t = new Thread(new ThreadStart(EventUpdate));
         t.Start();
+
+        Debug.Log("TRACKER INIT");
     }
 
     /// <summary>
@@ -73,8 +77,8 @@ public static class Tracker
     /// </summary>
     public static void Exit()
     {
-        Debug.Log("TRACKER END");
         exit_ = true;
+        Debug.Log("TRACKER END");
     }
 
     /// <summary>
@@ -87,7 +91,7 @@ public static class Tracker
         {
             while (pendingEvents.Count > 0)
             {
-                persisteneObj.Send(pendingEvents.Dequeue(),"json");
+                persisteneObj.Send(pendingEvents.Dequeue(), "json");
             }
             Thread.Sleep(500);
         }
@@ -103,9 +107,9 @@ public static class Tracker
         pendingEvents.Enqueue(e);
     }
 
-    public static void Event(Event.eventType etype)
+    public static void CreateEvent(Event.eventType etype)
     {
-        switch(etype)
+        switch (etype)
         {
             case Event.eventType.SHOT:
 
@@ -127,7 +131,7 @@ public static class Tracker
 
             case Event.eventType.CAMERAANGLE:
 
-                ExtremeAngleEvent cameraAng = new ExtremeAngleEvent(playerID, timeStamp, cameraAng);
+                ExtremeAngleEvent cameraAng = new ExtremeAngleEvent(playerID, timeStamp, camAngle);
                 pendingEvents.Enqueue(cameraAng);
                 break;
 

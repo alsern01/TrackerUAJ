@@ -1,15 +1,24 @@
-public class FilePersistence : FilePersistence
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class FilePersistence : Persistence
 {
 
-    Writer w;
+    //Writer w;
     public FilePersistence()
     {
-        w.Init()
+        Writer.Init();
     }
-        
+
     public override void Send(Event item, string format)
     {
-        w.WriteToFile(Event e, string format);
+        Writer.WriteToFile(item, format);
+    }
+
+    public override void Flush()
+    {
+
     }
 
 }
